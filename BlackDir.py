@@ -698,17 +698,17 @@ def wordpress(url, username, password, enum):
             user_list = open("username.txt", "r")
             p_file = open("password.txt", "r")
             print(colored("File For Users:", "green"), os.getcwd() + "/" + "username.txt")
-            print(colored("File For Users:", "green"), os.getcwd() + "/" + "password.txt")
+            print(colored("File For Passwords:", "green"), os.getcwd() + "/" + "password.txt")
         elif username is not None and password is None:
             user_list = open(username, "r")
             p_file = open("password.txt", "r")
             print(colored("File For Users:", "green"), username)
-            print(colored("File For Users:", "green"), os.getcwd() + "/" + "password.txt")
+            print(colored("File For Passwords:", "green"), os.getcwd() + "/" + "password.txt")
         elif username is None and password is not None:
             user_list = open("username.txt", "r")
             p_file = open(password, "r")
             print(colored("File For Users:", "green"), os.getcwd() + "/" + "username.txt")
-            print(colored("File For Users:", "green"), password)
+            print(colored("File For Passwords:", "green"), password)
         else:
             user_list = open(username, "r")
             p_file = open(password, "r")
