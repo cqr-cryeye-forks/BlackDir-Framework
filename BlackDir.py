@@ -742,7 +742,7 @@ def wordpress(url, username, password, enum):
                     response = sessions.get(wp_admin)
                 if url + "/wp-login.php?action=lostpassword" not in response.text:
                     print("Found !", "Username:", usernames, "password:", passowrds)
-                    exit(0)
+                    # exit(0) continue scan even if user is found
                 else:
                     print(colored("Not Found !", "red"), "Username:", usernames, "password:", passowrds)
 
