@@ -861,7 +861,7 @@ elif sql_inection is not None and scanner is None and url is None and dork is No
 elif sql_inection is None and scanner is None and url is None and dork is None and subdomains is None and list_dork is not None and updates is None and ip is None and portscan is None and html is None and hash_type is None and user_word is None and hash_ide is None and url_wordpress is None:
     list_dorks(list_dork)
 elif sql_inection is None and scanner is None and url is None and dork is None and subdomains is None and list_dork is None and updates is not None and ip is None and portscan is None and html is None and hash_type is None and user_word is None and hash_ide is None and url_wordpress is None:
-    if updates is "check" or updates is "Check":
+    if updates == "check" or updates == "Check":
         update()
     else:
         print(colored("Error ! Please Enter --update check", "red"))
