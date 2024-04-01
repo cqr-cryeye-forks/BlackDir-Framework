@@ -12,6 +12,7 @@ import json
 import pathlib
 
 from constants import result_dict
+from paths import LIST_TXT_PATH, SUB_TXT_PATH
 from scan_functions import dorks, spider, sub, xss, sql, list_dorks, update, ip_reverse, scanports, html_injection, \
     hash_identifier, hash_en, wordpress
 
@@ -92,7 +93,7 @@ def main():
         secure = None
 
     elif listuser is None:
-        listuser = open("list.txt", "r")
+        listuser = open(LIST_TXT_PATH, "r")
         secure = "list.txt"
 
     output_file = args.output_file
@@ -112,7 +113,7 @@ def main():
     list_dork = args.listDork
     updates = args.update
     html = args.HTMLinj
-    sublist = open("sub.txt", "r")
+    sublist = open(SUB_TXT_PATH, "r")
     site = args.country
     hash_type = args.type
     user_word = args.word

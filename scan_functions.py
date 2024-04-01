@@ -12,6 +12,8 @@ import requests
 from bs4 import BeautifulSoup
 
 from constants import result_dict
+from paths import LINK_TXT_PATH, XSS_PAYLOADS_PATH, HTML_PAYLOADS_PATH, SITE_FROM_DORK_PATH, PASSWORD_TXT_PATH, \
+    USERNAME_TXT_PATH
 
 
 def fast_crawl(url):
@@ -187,7 +189,7 @@ def fast_crawl(url):
 
 
 def admin_panel(url):
-    file_fromat = open("link.txt", "r")
+    file_fromat = open(LINK_TXT_PATH, "r")
     if "urls_found" not in result_dict:
         result_dict["urls_found"] = []
 
@@ -266,7 +268,7 @@ def xss(url):  # Function FOr Find xss vulnerability
     # GET Method
     try:
         GET = {}
-        file = open("xss_payloads.txt", "r")
+        file = open(XSS_PAYLOADS_PATH, "r")
         parsed = urlparse.urlparse(url)
         params = urlparse.parse_qsl(parsed.query)
         print("Parameters in Link:", params)
@@ -322,7 +324,7 @@ def xss(url):  # Function FOr Find xss vulnerability
     # Post Method
     try:
         POST = {}
-        New_open = open("xss_payloads.txt")
+        New_open = open(XSS_PAYLOADS_PATH)
         request_form = request.urlopen(url).read()
         source = BeautifulSoup(request_form, "html.parser")
 
@@ -440,7 +442,7 @@ def html_injection(url):
 
     # GET
     try:
-        file = open("html_payloads.txt", "r")
+        file = open(HTML_PAYLOADS_PATH, "r")
         GET = {}
         parsed = urlparse.urlparse(url)
         params = urlparse.parse_qsl(parsed.query)
@@ -477,7 +479,7 @@ def html_injection(url):
     try:
         input_name = None
         POST = {}
-        file_payloads = open("html_payloads.txt")
+        file_payloads = open(HTML_PAYLOADS_PATH)
         request_form = request.urlopen(url).read()
         source = BeautifulSoup(request_form, "html.parser")
 
@@ -554,7 +556,7 @@ def dorks(dork, country, text):  # function for Get Dork
         print("Link:", list_of_link[1], "\n")
         list_of_url.append(list_of_link[1])
 
-    file_dork = open("Site_From_Dork.txt", "w")
+    file_dork = open(SITE_FROM_DORK_PATH, "w")
     for url_find in list_of_url:
         file_dork.write(url_find + "\n")
     file_dork.close()
@@ -570,7 +572,7 @@ def dorks(dork, country, text):  # function for Get Dork
             url_find = "http://" + url_find
 
             try:
-                file_admin = open("link.txt", "r")
+                file_admin = open(LINK_TXT_PATH, "r")
                 for direct in file_admin:
                     direct = direct.strip()
                     req_admin = requests.get(url_find + "/" + direct)
@@ -810,7 +812,7 @@ def wordpress(url, username, password, enum):
     if user is not None and password is None:
         user_list.append(user)
         print("[+] Found User:", user)
-        p_file = open("password.txt", "r")
+        p_file = open(PASSWORD_TXT_PATH, "r")
         print("File For Passwords:", os.getcwd() + "/" + "password.txt")
     elif user is not None and password is not None:
         user_list.append(user)
@@ -820,17 +822,17 @@ def wordpress(url, username, password, enum):
 
     else:
         if username is None and password is None:
-            user_list = open("username.txt", "r")
-            p_file = open("password.txt", "r")
+            user_list = open(USERNAME_TXT_PATH, "r")
+            p_file = open(PASSWORD_TXT_PATH, "r")
             print("File For Users:", os.getcwd() + "/" + "username.txt")
             print("File For Passwords:", os.getcwd() + "/" + "password.txt")
         elif username is not None and password is None:
             user_list = open(username, "r")
-            p_file = open("password.txt", "r")
+            p_file = open(PASSWORD_TXT_PATH, "r")
             print("File For Users:", username)
             print("File For Passwords:", os.getcwd() + "/" + "password.txt")
         elif username is None and password is not None:
-            user_list = open("username.txt", "r")
+            user_list = open(USERNAME_TXT_PATH, "r")
             p_file = open(password, "r")
             print("File For Users:", os.getcwd() + "/" + "username.txt")
             print("File For Passwords:", password)
