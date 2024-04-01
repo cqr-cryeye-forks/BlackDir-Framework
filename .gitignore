@@ -1,0 +1,14 @@
+.idea
+venv
+
+Site_From_Dork.txt
+a.json
+xss.json
+hash_type.json
+HTMLinj.json
+port.json
+rev.json
+RevIP.json
+sql.json
+subdomain.json
+wordpress.json
