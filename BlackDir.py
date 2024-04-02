@@ -158,10 +158,12 @@ def main():
     elif (not sql_inection and not scanner and not url and not dork and not subdomains and not list_dork
           and not updates and ip and not portscan and not html and not hash_type and not user_word
           and not hash_ide and not url_wordpress):
+        print("ip_reverse")
         ip_reverse(ip)
     elif (not sql_inection and not scanner and not url and not dork and not subdomains and not list_dork
           and not updates and not ip and portscan and not html and not hash_type and not user_word
           and not hash_ide and not url_wordpress):
+        print("scanports")
         scanports(portscan)
     elif (not sql_inection and not scanner and not url and not dork and not subdomains and not list_dork
           and not updates and not ip and not portscan and html and not hash_type and not user_word

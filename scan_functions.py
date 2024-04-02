@@ -664,9 +664,10 @@ def ip_reverse(ip):
         result_dict["ip_reverse"] = []
 
     try:
-        url = "https://api.hackertarget.com/reverseiplookup/?q="
-        ip = url + ip
-        req = requests.get(ip)
+        url = "https://api.hackertarget.com/reverseiplookup/?q=" + ip
+        print("url", url)
+        print("ip", ip)
+        req = requests.get(url)
         response = req.text
         print(response)
 
